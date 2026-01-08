@@ -1,87 +1,211 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tic-tac-toe</title>
+    <meta name="description" content="Permainan Tic-Tac-Toe modern dengan AI dan mode multiplayer">
+    <meta name="author" content="Lan">
+    <meta name="theme-color" content="#6366f1">
+    
+    <title>Tic-Tac-Toe Game - Modern & Interactive</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Font Awesome Icons - FIXED -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4fXbE+eE6s9Z0kJ8d+4KQ=="
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
     />
-
+    
+    <!-- Custom Styles -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header>
-        <h1>Tic-Tac-Toe GAME</h1>
-        <div class="icons">
-            <div class="icon-mode">
-                <button class="dark-mode" aria-label="Toggle dark mode">
-                    <i class="fa-solid fa-moon"></i>
-                </button>
-            </div>
-            <button>back to home</button>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-container">
+            <h1 class="header-title">
+                <i class="fa-solid fa-gamepad"></i>
+                Tic-Tac-Toe Game
+            </h1>
+            
+            <nav class="header-nav">
+                <div class="nav-icons">
+                    <button class="btn-icon dark-mode" aria-label="Toggle dark mode" title="Toggle dark/light mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <button class="btn-secondary" aria-label="Back to home">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Home</span>
+                    </button>
+                </div>
+            </nav>
         </div>
     </header>
 
-    <div class="score-card">
-        <div class="player-x">
-            <h2>Player X</h2>
-            <p class="score" id="score-x">0</p>
-        </div>
-        <div class="player-o">
-            <h2>Player O</h2>
-            <p class="score" id="score-o">0</p>
-        </div>
-    </div>
-
-    <div class="game-setup" id="gameSetup">
-        <h2>Pilih Mode Permainan</h2>
-
-        <div class="setup-section">
-            <h3>Pilih Lawan</h3>
-            <div class="label">
-                <label>
-                    <input type="radio" name="opponent" value="human" checked>
-                    Melawan Pemain Lain
-                </label>
-                <label>
-                    <input type="radio" name="opponent" value="computer">
-                    Melawan Komputer
-                </label>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Score Section -->
+        <section class="score-section" aria-label="Player scores">
+            <div class="score-card">
+                <article class="player-card player-x">
+                    <div class="player-icon">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                    <h2 class="player-name">Player X</h2>
+                    <p class="score" id="score-x" aria-live="polite">0</p>
+                </article>
+                
+                <article class="player-card player-o">
+                    <div class="player-icon">
+                        <i class="fa-regular fa-circle"></i>
+                    </div>
+                    <h2 class="player-name">Player O</h2>
+                    <p class="score" id="score-o" aria-live="polite">0</p>
+                </article>
             </div>
-        </div>
+        </section>
 
-        <div class="setup-section">
-            <h3>Pilih Tingkat Kesulitan</h3>
-            <div class="label">
-                <button data-mode="easy">Mudah</button>
-                <button data-mode="medium">Sedang</button>
-                <button data-mode="hard">Sulit</button>
+        <!-- Game Setup Section -->
+        <section class="game-setup" id="gameSetup" aria-label="Game configuration">
+            <div class="setup-container">
+                <header class="setup-header">
+                    <h2 class="setup-title">
+                        <i class="fa-solid fa-gear"></i>
+                        Pilih Mode Permainan
+                    </h2>
+                </header>
+
+                <div class="setup-body">
+                    <!-- Opponent Selection -->
+                    <div class="setup-section">
+                        <h3 class="section-title">
+                            <i class="fa-solid fa-users"></i>
+                            Pilih Lawan
+                        </h3>
+                        <div class="option-group opponent-options">
+                            <label class="option-label">
+                                <input 
+                                    type="radio" 
+                                    name="opponent" 
+                                    value="human" 
+                                    checked 
+                                    aria-label="Play against another player"
+                                >
+                                <span class="option-content">
+                                    <i class="fa-solid fa-user-group"></i>
+                                    <span class="option-text">Melawan Pemain Lain</span>
+                                </span>
+                            </label>
+                            
+                            <label class="option-label">
+                                <input 
+                                    type="radio" 
+                                    name="opponent" 
+                                    value="computer" 
+                                    aria-label="Play against computer"
+                                >
+                                <span class="option-content">
+                                    <i class="fa-solid fa-robot"></i>
+                                    <span class="option-text">Melawan Komputer</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Difficulty Selection -->
+                    <div class="setup-section difficulty-section">
+                        <h3 class="section-title">
+                            <i class="fa-solid fa-chart-line"></i>
+                            Pilih Tingkat Kesulitan
+                        </h3>
+                        <div class="option-group difficulty-options">
+                            <button 
+                                class="btn-difficulty" 
+                                data-mode="easy"
+                                aria-label="Easy difficulty"
+                            >
+                                <i class="fa-solid fa-face-smile"></i>
+                                <span>Mudah</span>
+                            </button>
+                            
+                            <button 
+                                class="btn-difficulty" 
+                                data-mode="medium"
+                                aria-label="Medium difficulty"
+                            >
+                                <i class="fa-solid fa-face-meh"></i>
+                                <span>Sedang</span>
+                            </button>
+                            
+                            <button 
+                                class="btn-difficulty" 
+                                data-mode="hard"
+                                aria-label="Hard difficulty"
+                            >
+                                <i class="fa-solid fa-face-frown"></i>
+                                <span>Sulit</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="setup-footer">
+                    <button 
+                        class="btn-primary start-game" 
+                        id="startGameBtn" 
+                        disabled
+                        aria-label="Start game"
+                    >
+                        <i class="fa-solid fa-play"></i>
+                        <span>Mulai Permainan</span>
+                    </button>
+                </footer>
             </div>
-        </div>
+        </section>
 
-        <button class="start-game" id="startGameBtn" disabled>Mulai Permainan</button>
-    </div>
-
-    <main class="hidden" id="gameArena">
-        <div class="game-board">
-            <div class="cell" data-index="0" aria-label="cell 1"></div>
-            <div class="cell" data-index="1" aria-label="cell 2"></div>
-            <div class="cell" data-index="2" aria-label="cell 3"></div>
-            <div class="cell" data-index="3" aria-label="cell 4"></div>
-            <div class="cell" data-index="4" aria-label="cell 5"></div>
-            <div class="cell" data-index="5" aria-label="cell 6"></div>
-            <div class="cell" data-index="6" aria-label="cell 7"></div>
-            <div class="cell" data-index="7" aria-label="cell 8"></div>
-            <div class="cell" data-index="8" aria-label="cell 9"></div>
-        </div>
+        <!-- Game Arena Section -->
+        <section class="game-arena hidden" id="gameArena" aria-label="Game board">
+            <div class="arena-container">
+                <div class="game-board" role="grid" aria-label="Tic-tac-toe board">
+                    <button class="cell" data-index="0" role="gridcell" aria-label="Cell 1"></button>
+                    <button class="cell" data-index="1" role="gridcell" aria-label="Cell 2"></button>
+                    <button class="cell" data-index="2" role="gridcell" aria-label="Cell 3"></button>
+                    <button class="cell" data-index="3" role="gridcell" aria-label="Cell 4"></button>
+                    <button class="cell" data-index="4" role="gridcell" aria-label="Cell 5"></button>
+                    <button class="cell" data-index="5" role="gridcell" aria-label="Cell 6"></button>
+                    <button class="cell" data-index="6" role="gridcell" aria-label="Cell 7"></button>
+                    <button class="cell" data-index="7" role="gridcell" aria-label="Cell 8"></button>
+                    <button class="cell" data-index="8" role="gridcell" aria-label="Cell 9"></button>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <button class="reset-btn" disabled>Reset Game</button>
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <button 
+                class="btn-primary reset-btn" 
+                disabled
+                aria-label="Reset game"
+            >
+                <i class="fa-solid fa-rotate-right"></i>
+                <span>Reset Game</span>
+            </button>
+            
+            <p class="footer-text">
+                Created with <i class="fa-solid fa-heart"></i> by Lan
+            </p>
+        </div>
     </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js" defer></script>
+</body>
 </html>
